@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ('partials/head') %>
+        <!-- Own Stylesheet -->
+        <link rel="stylesheet" href="/styles/app.css">
+
+</head>
+
+<body>
+    <%- include('partials/header') %>
+
+
+
+        <div class="container">
+            <div class="row productos">
+                <h2>Detalles de producto: <%= producto.name %>
+                </h2>
+                <div class="container">
+                    <div class="contenido card mx-auto">
+                        <div class="descriptivo">
+                            <img src="/images/<%= producto.image %>" class="card-img-top" alt="...">
+                            <p class="description">
+                                <%= producto.description %>
+                            </p>
+                        </div>
+
+                        <div class="datos">
+                            <h3 class="nombre">
+                                <%= producto.name %>
+                            </h3>
+
+                            <h3 class="precio">
+                                $<%= producto.price %>
+                            </h3>
+                            <article class="facilidades">
+                                <i class="fas fa-credit-card"></i>
+                                <p>Pagá con tarjeta o en efectivo</p>
+                            </article>
+                            <article class="facilidades">
+                                <i class="fas fa-gift"></i>
+                                <p>Envío gratis desde $ 1.999</p>
+                            </article>
+                            <Button>Comprar Ahora</Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <%- include('partials/footer') %>
+
+            <%- include('partials/scripts') %>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ('partials/head') %>
+        <!-- Own Stylesheet -->
+        <link rel="stylesheet" href="/styles/style.css">
+
+</head>
+
+<body>
+    <%- include('partials/header') %>
+
+        <%- include('partials/banner') %>
+
+            <section class="container">
+                <div class="row productos">
+
+                    <div class="col-12">
+                        <h2>Basado en tu última visita</h2>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <% visitedProducts.forEach(producto=> { %>
+
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <a href="productos/detalles/<%= producto.id %>/<%= producto.category%>  ">
+                                        <div class="contenido card mx-auto" style="width: 98%;">
+                                            <img src="/images/<%= producto.image %>" class="card-img-top" alt=>
+                                            <div class="datos">
+                                                <h3>$<%= toThousand(producto.price - Math.round(producto.price / 100 * producto.discount)) %></h3>
+                                                <% if (producto.discount> 0) { %>
+                                                <span><%= producto.discount %>% OFF</span>
+                                                <% } %>
+                                                <p><%= producto.name %></p>
+                                                <i class="fas fa-truck"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <% }) %>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12">
+                        <h2>Ofertas</h2>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <% saleProducts.forEach(producto=> { %>
+                                <a href="productos/detalles/<%= producto.id %>/<%= producto.category%>  ">
+                                    <div class="col-12 col-md-6 col-lg-3">
+                                        <div class="contenido card mx-auto" style="width: 98%;">
+                                            <img src="/images/<%= producto.image %>" class="card-img-top" alt=>
+                                            <div class="datos">
+                                                <h3>$<%= toThousand(producto.price - Math.round(producto.price / 100 * producto.discount)) %></h3>
+                                                <% if (producto.discount> 0) { %>
+                                                <span><%= producto.discount %>% OFF</span>
+                                                <% } %>
+                                                <p><%= producto.name %></p>
+                                                <i class="fas fa-truck"></i>
+                                            </div>
+                                        </div>
+                                </a>
+                        </div>
+                        <% }) %>
+                    </div>
+                </div>
+
+                <%- include('partials/footer') %>
+
+                    <%- include('partials/scripts') %>
+
+
+</body>
+
+</html>
